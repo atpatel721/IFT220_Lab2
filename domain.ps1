@@ -15,7 +15,7 @@ Write-Host -ForegroundColor yellow $gateway
 
 # Set the current IP address as static
 Remove-NetIPAddress -InterfaceAlias $nicname -AddressFamily IPv4 -Confirm:$false
-#Remove-NetRoute -InterfaceAlias $nicname -AddressFamily IPv4 -Confirm:$false
+# Remove-NetRoute -InterfaceAlias $nicname -AddressFamily IPv4 -Confirm:$false
 New-NetIPAddress -InterfaceAlias $nicname -IPAddress $ipaddress -AddressFamily IPv4 -PrefixLength $prefixlength -DefaultGateway $gateway
 
 # Set the DNS address to ourselves
@@ -39,7 +39,7 @@ Do {
 Write-Host -ForegroundColor yellow "What's the domain name going to be? It should be"
 Write-Host -ForegroundColor yellow "ad.<your ASUrite ID>.lan, for example"
 Write-Host -ForegroundColor yellow "ad.4sparky.lan"
-$domainname = Read-Host "ad.<your ASUrite ID >.lan" 
+$domainname = Read-Host "ad.<your ASUrite ID>.lan" 
 } until ($domainname.StartsWith("ad."))
 
 Write-Host -ForegroundColor Red "After you supply the SafeModeAdministratorPassword the machine will reboot on its own."
